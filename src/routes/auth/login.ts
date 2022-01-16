@@ -1,5 +1,5 @@
 import express from "express";
-import e, { Request, Response } from "express";
+import { Request, Response } from "express";
 import { User } from "../../entities/User";
 import bcrypt from "bcrypt";
 

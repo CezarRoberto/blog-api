@@ -1,4 +1,4 @@
-import express from "express";
+import express, { application } from "express";
 import { createConnection } from "typeorm";
 import "reflect-metadata";
 import { findUsersRouter } from "./routes/user/findUsers";
@@ -8,6 +8,7 @@ import { User } from "./entities/User";
 import { Post } from "./entities/Post";
 import bodyParser from "body-parser";
 import { findOneUserRouter } from "./routes/user/findOneUser";
+import { updateUserRouter } from "./routes/user/updateUser";
 
 const app = express();
 
@@ -32,6 +33,7 @@ async function main() {
     app.use(RegisterRouter);
     app.use(LoginRouter);
     app.use(findOneUserRouter);
+    app.use(updateUserRouter);
   } catch (error) {
     console.log(error);
   }

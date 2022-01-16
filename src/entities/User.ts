@@ -1,3 +1,4 @@
+import { IsEmail, IsInt, IsString } from "class-validator";
 import {
   BaseEntity,
   Column,
@@ -9,18 +10,22 @@ import {
 } from "typeorm";
 import { Post } from "./Post";
 
-@Entity()
+@Entity("user")
 export class User extends BaseEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn("uuid")
+  @IsInt()
   id: number;
 
   @Column({ unique: true })
+  @IsString()
   username: string;
 
   @Column({ unique: true })
+  @IsEmail()
   email: string;
 
   @Column()
+  @IsString()
   password: string;
 
   @Column({ default: "" })

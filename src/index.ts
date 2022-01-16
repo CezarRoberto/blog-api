@@ -1,12 +1,13 @@
 import express from "express";
 import { createConnection } from "typeorm";
 import "reflect-metadata";
-import { createUserRouter } from "./routes/user/createUser";
+import { findUsersRouter } from "./routes/user/findUsers";
 import { RegisterRouter } from "./routes/auth/register";
 import { LoginRouter } from "./routes/auth/login";
 import { User } from "./entities/User";
 import { Post } from "./entities/Post";
 import bodyParser from "body-parser";
+import { findOneUserRouter } from "./routes/user/findOneUser";
 
 const app = express();
 
@@ -27,9 +28,10 @@ async function main() {
       console.log("Connected Sucessful");
     }
     app.use(bodyParser.json());
-    app.use(createUserRouter);
+    app.use(findUsersRouter);
     app.use(RegisterRouter);
     app.use(LoginRouter);
+    app.use(findOneUserRouter);
   } catch (error) {
     console.log(error);
   }

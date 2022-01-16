@@ -1,4 +1,4 @@
-import express, { application } from "express";
+import express from "express";
 import { createConnection } from "typeorm";
 import "reflect-metadata";
 import { findUsersRouter } from "./routes/user/findUsers";
@@ -9,6 +9,12 @@ import { Post } from "./entities/Post";
 import bodyParser from "body-parser";
 import { findOneUserRouter } from "./routes/user/findOneUser";
 import { updateUserRouter } from "./routes/user/updateUser";
+import { createPostRouter } from "./routes/post/createPost";
+import { deleteUserRouter } from "./routes/user/deleteUser";
+import { deletePostRouter } from "./routes/post/deletePost";
+import { findOnePostRouter } from "./routes/post/findOnePost";
+import { findPostsRouter } from "./routes/post/findPosts";
+import { updatePostRouter } from "./routes/post/updatePost";
 
 const app = express();
 
@@ -29,11 +35,22 @@ async function main() {
       console.log("Connected Sucessful");
     }
     app.use(bodyParser.json());
-    app.use(findUsersRouter);
+    // AUTH
     app.use(RegisterRouter);
     app.use(LoginRouter);
+
+    // USER
+    app.use(findUsersRouter);
     app.use(findOneUserRouter);
     app.use(updateUserRouter);
+    app.use(deleteUserRouter);
+
+    // POST
+    app.use(createPostRouter);
+    app.use(updatePostRouter);
+    app.use(deletePostRouter);
+    app.use(findPostsRouter);
+    app.use(findOnePostRouter);
   } catch (error) {
     console.log(error);
   }

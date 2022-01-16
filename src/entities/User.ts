@@ -31,8 +31,7 @@ export class User extends BaseEntity {
   @Column({ default: "" })
   profilePic: string;
 
-  @OneToMany(() => Post, (post) => post.user)
-  posts: Post[];
+
 
   @CreateDateColumn()
   created_at: Date;

@@ -16,12 +16,12 @@ export enum CategoryType {
   FITNESS = "fitness",
 }
 
-@Entity()
+@Entity("post")
 export class Post extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({unique: true})
   title: string;
 
   @Column()
@@ -39,9 +39,7 @@ export class Post extends BaseEntity {
   })
   type: string;
 
-  @ManyToOne(() => User, (user) => user.posts)
-  @JoinColumn({ name: "photoId" })
-  user: User;
+
 
   @CreateDateColumn()
   created_at: Date;

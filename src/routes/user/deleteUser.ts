@@ -10,7 +10,7 @@ router.delete(
     try {
       const { userId } = req.params;
       const response = await User.delete(userId);
-      return res.sendStatus(200).json(response);
+      return res.sendStatus(200);
     } catch (error) {
       return res.sendStatus(400);
     }

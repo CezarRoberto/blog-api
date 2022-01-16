@@ -9,7 +9,7 @@ router.get(
   async (req: Request, res: Response): Promise<Response> => {
     try {
       const users = await User.find({
-        select: ["username", "email", "posts", "profilePic", "id"],
+        select: ["username", "email", "profilePic", "id",],
       });
       return res.send(users);
     } catch (error) {

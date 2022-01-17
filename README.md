@@ -1,6 +1,6 @@
 **HOW TO INSTALL**
 
-## HeadingTechnologies/Packages
+## Technologies/Packages
 
  - NodeJs
  - TypeORM

@@ -15,6 +15,7 @@ import { deletePostRouter } from "./routes/post/deletePost";
 import { findOnePostRouter } from "./routes/post/findOnePost";
 import { findPostsRouter } from "./routes/post/findPosts";
 import { updatePostRouter } from "./routes/post/updatePost";
+import { uploadFilesRouter } from "./routes/images/uploadImages";
 
 const app = express();
 
@@ -51,6 +52,9 @@ async function main() {
     app.use(deletePostRouter);
     app.use(findPostsRouter);
     app.use(findOnePostRouter);
+
+    // FILES
+    app.use(uploadFilesRouter);
   } catch (error) {
     console.log(error);
   }
